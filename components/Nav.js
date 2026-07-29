@@ -4,17 +4,21 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import AudienceSwitcher from "./AudienceSwitcher";
-
-const links = [
-  { href: "/services", label: "Services" },
-  { href: "/pricing", label: "Pricing" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { useAudience } from "./AudienceProvider";
 
 export default function Nav() {
   const pathname = usePathname();
+  const { audience } = useAudience();
   const [open, setOpen] = useState(false);
+
+  // Pricing now lives on each audience's home page, so the link has to resolve
+  // to whichever home the visitor belongs to — including from /about and /contact.
+  const home = audience === "agency" ? "/for-agencies" : "/";
+  const links = [
+    { href: `${home}#pricing`, label: "Pricing" },
+    { href: "/about", label: "About" },
+    { href: "/contact", label: "Contact" },
+  ];
 
   // Close the mobile menu whenever the route changes.
   useEffect(() => {

@@ -5,8 +5,6 @@ export default function sitemap() {
   const routes = [
     { path: "/", priority: 1 },
     { path: "/for-agencies", priority: 0.9 },
-    { path: "/services", priority: 0.8 },
-    { path: "/pricing", priority: 0.8 },
     { path: "/about", priority: 0.6 },
     { path: "/contact", priority: 0.6 },
   ];

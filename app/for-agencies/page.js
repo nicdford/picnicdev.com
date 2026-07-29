@@ -23,9 +23,6 @@ export default function ForAgencies() {
       <section className="hero">
         <div className="wrap hero-grid">
           <div>
-            <Reveal className="eyebrow" as="span">
-              White-label web development
-            </Reveal>
             <Reveal as="h1" delay={60}>
               You design it.
               <br />
@@ -41,13 +38,9 @@ export default function ForAgencies() {
               <Link href="/contact" className="btn btn-primary">
                 Start a partnership →
               </Link>
-              <Link href="/services" className="hero-link">
+              <Link href="#services" className="hero-link">
                 or see how it works
               </Link>
-            </Reveal>
-            <Reveal as="p" className="hero-note" delay={240}>
-              <Icon name="handshake" /> White-label · on-time · built
-              under your brand
             </Reveal>
           </div>
 
@@ -61,7 +54,6 @@ export default function ForAgencies() {
       {/* ---------------- CAPABILITIES ---------------- */}
       <div className="strip">
         <div className="strip-inner">
-          <span className="caps-label">What I build</span>
           <span className="pill">
             <Icon name="puzzle" /> WordPress &amp; custom themes
           </span>
@@ -72,13 +64,48 @@ export default function ForAgencies() {
             <Icon name="target" /> Pixel-faithful from Figma
           </span>
           <span className="pill">
-            <Icon name="rocket" /> fly.io deploys &amp; CI/CD
+            <Icon name="rocket" /> CI/CD &amp; Automation
           </span>
         </div>
       </div>
 
+      {/* ---------------- PARTNER PROGRAM (was /services#agency) ---------------- */}
+      <section className="section" id="services">
+        <div className="wrap">
+          <div className="feature-row flip">
+            <Reveal className="feature-visual v-honey">
+              <span className="emoji" aria-hidden="true"><Icon name="handshake" /></span>
+              <div className="gingham strip-b" aria-hidden="true" />
+            </Reveal>
+            <Reveal delay={80}>
+              <span className="eyebrow">Agency Partner Program</span>
+              <h2>Your on-call development team.</h2>
+              <p className="lead">
+                Agencies bring the brand, the strategy, and the design — I turn
+                it into clean, well-built, on-time websites under your name.
+              </p>
+              <ul className="check-list">
+                <li>White-label: I stay invisible, you stay the hero</li>
+                <li>Faithful builds from Figma, XD, or flat designs</li>
+                <li>WordPress, static, or custom — your call</li>
+                <li>Staff augmentation for overflow &amp; deadlines</li>
+                <li>Clear communication and predictable timelines</li>
+              </ul>
+              <Link href="/contact" className="btn btn-primary" style={{ marginTop: "1.6rem" }}>
+                Become a partner →
+              </Link>
+            </Reveal>
+          </div>
+
+          <p className="cross-note">
+            <Icon name="storefront" /> Here as a business owner instead?{" "}
+            <Link href="/">See direct-client pricing →</Link>
+          </p>
+        </div>
+      </section>
+
       {/* ---------------- HOW THE PARTNERSHIP WORKS ---------------- */}
-      <section className="section">
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <Reveal className="head center">
             <span className="eyebrow">How the partnership works</span>
@@ -162,7 +189,7 @@ export default function ForAgencies() {
       </section>
 
       {/* ---------------- WAYS I PLUG IN ---------------- */}
-      <section className="section" style={{ paddingTop: 0 }}>
+      <section className="section" id="pricing" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <Reveal className="head center">
             <span className="eyebrow">Three ways to work together</span>
@@ -188,7 +215,7 @@ export default function ForAgencies() {
                 <li>Delivered ready for your client</li>
               </ul>
               <div className="tier-cta">
-                <Link href="/contact" className="btn btn-ghost">
+                <Link href="/contact?tier=Agency partner" className="btn btn-ghost">
                   Discuss a build
                 </Link>
               </div>
@@ -208,7 +235,7 @@ export default function ForAgencies() {
                 <li>One familiar developer</li>
               </ul>
               <div className="tier-cta">
-                <Link href="/contact" className="btn btn-primary">
+                <Link href="/contact?tier=Agency partner" className="btn btn-primary">
                   Talk terms
                 </Link>
               </div>
@@ -227,7 +254,7 @@ export default function ForAgencies() {
                 <li>Staging &amp; production</li>
               </ul>
               <div className="tier-cta">
-                <Link href="/contact" className="btn btn-ghost">
+                <Link href="/contact?tier=Agency partner" className="btn btn-ghost">
                   Scope a project
                 </Link>
               </div>
@@ -263,6 +290,46 @@ export default function ForAgencies() {
                 <p>{s.p}</p>
               </Reveal>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- UNDER THE HOOD (was /services) ---------------- */}
+      <section className="section" style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <Reveal className="head center">
+            <span className="eyebrow">Under the hood</span>
+            <h2>The kit I cook with</h2>
+            <p className="lead">
+              Modern where it matters, boring where it should be. The right tool
+              for the job — not whatever&apos;s trendy this week.
+            </p>
+          </Reveal>
+          <div className="values">
+            <Reveal className="value">
+              <span className="em" aria-hidden="true"><Icon name="globe" /></span>
+              <h3>Static &amp; JAMstack</h3>
+              <p>
+                Hand-built HTML/CSS and modern frameworks like Next.js. Fast,
+                secure, and cheap (or free) to host.
+              </p>
+            </Reveal>
+            <Reveal className="value" delay={80}>
+              <span className="em" aria-hidden="true"><Icon name="puzzle" /></span>
+              <h3>WordPress</h3>
+              <p>
+                Years of WordPress builds — custom themes, plugins, and
+                editor-friendly setups your team can actually use.
+              </p>
+            </Reveal>
+            <Reveal className="value" delay={160}>
+              <span className="em" aria-hidden="true"><Icon name="rocket" /></span>
+              <h3>Apps &amp; DevOps</h3>
+              <p>
+                Standalone application development with fly.io deployments, CI/CD
+                pipelines, and everything wired up to ship safely.
+              </p>
+            </Reveal>
           </div>
         </div>
       </section>

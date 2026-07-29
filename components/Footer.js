@@ -20,18 +20,17 @@ export default function Footer() {
 
         <div className="fcol">
           <h4>Explore</h4>
-          <Link href="/services">Services</Link>
-          <Link href="/pricing">Pricing</Link>
+          <Link href="/#pricing">Pricing</Link>
           <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
         </div>
 
         <div className="fcol">
           <h4>What we do</h4>
-          <Link href="/pricing#static">Static sites</Link>
-          <Link href="/pricing#wordpress">WordPress builds</Link>
-          <Link href="/pricing#custom">Custom & app dev</Link>
-          <Link href="/services#agency">Agency partners</Link>
+          <Link href="/#static">Static sites</Link>
+          <Link href="/#wordpress">WordPress builds</Link>
+          <Link href="/#custom">Custom & app dev</Link>
+          <Link href="/for-agencies">Agency partners</Link>
         </div>
       </div>
       <div className="footer-bottom">

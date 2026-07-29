@@ -360,12 +360,39 @@ a { color: inherit; text-decoration: none; }
   .nav-switch-bar .aud-field { width: 100%; }
 }
 
-/* Audience-conditional content (Services / Pricing adapt in place) */
+/* Audience-conditional content — hide a block from the audience it isn't for */
 html[data-audience="business"] [data-aud="agency"] { display: none; }
 html[data-audience="agency"] [data-aud="business"] { display: none; }
-.svc-offerings { display: flex; flex-direction: column; }
-html[data-audience="agency"] .svc-offerings > #full-service { order: 2; }
-html[data-audience="agency"] .svc-offerings > #agency { order: 1; }
+
+/* Anchor targets must clear the sticky nav when jumped to */
+[id="services"], [id="pricing"],
+[id="static"], [id="wordpress"], [id="custom"] { scroll-margin-top: 96px; }
+
+/* Cross-sell line to the other audience's home */
+.cross-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: clamp(28px, 4vw, 44px) 0 0;
+  padding: 0.9rem 1.2rem;
+  border: var(--bd) dashed var(--ink);
+  border-radius: var(--radius);
+  background: var(--paper-2);
+  color: var(--ink-soft);
+  font-weight: 700;
+  text-align: center;
+}
+.cross-note a {
+  color: var(--red-deep);
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+.cross-note a:hover { color: var(--ink); }
 
 /* ============================================================
    HERO
