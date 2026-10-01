@@ -18,6 +18,11 @@ finished design and get it built reliably and on time under their own brand (whi
 without hiring an in-house developer. This is a real revenue line but the marketing site is
 optimized to convert the primary audience first.
 
+**Also served: nonprofits and local organizations** (chambers of commerce, economic development
+agencies, community groups) with ongoing but part-time web needs. Their job: keep a site hosted,
+maintained, and improving with a few developer hours a month, without hiring a full-time person
+or leaning on volunteers. Home route: `/for-organizations`, built around monthly care plans.
+
 ## Product Purpose
 
 picnicdev is a one-person web development studio that builds and ships websites and web
@@ -32,7 +37,7 @@ for, and carrying near-zero ongoing cost.
 **You work directly with one experienced developer — start to finish.** No account managers,
 no sales layer, no outsourced hand-offs. The person who quotes the work builds the work and
 answers your email. For a small-business owner this means honest, fast, plain-language answers
-and accountability from a single senior person; for agencies it means a dependable builder who
+and accountability from a single senior person; for agencies it means a dependable developer who
 plugs in cleanly. A larger agency cannot truthfully make this claim, and a freelancer
 marketplace cannot guarantee it.
 
@@ -51,6 +56,10 @@ design → build → launch → post-launch support. Clients choose from three s
 
 Agency Partner Program runs in parallel: picnicdev builds from the agency's designs under the
 agency's brand, including overflow/staff-augmentation work.
+
+Monthly care plans (organizations audience) bundle managed hosting, updates, backups, monitoring,
+and a fixed block of developer hours: **Essentials**, **Steady**, and **Part-time dev**. Prices
+and hours on the site are placeholders until set.
 
 ## Capabilities and Constraints
 

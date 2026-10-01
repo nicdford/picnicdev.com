@@ -339,7 +339,7 @@ export default function ForAgencies() {
         <div className="wrap">
           <Reveal className="cta-box">
             <div className="gingham blanket-top" aria-hidden="true" />
-            <h2>Need a builder you can count on?</h2>
+            <h2>Need a developer you can count on?</h2>
             <p>
               Send over a design or tell me about your pipeline, and let&apos;s
               talk about a partnership that makes your deadlines easier.

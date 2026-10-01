@@ -2,15 +2,16 @@
 
 import { createContext, useContext, useEffect, useState, useCallback } from "react";
 import { usePathname } from "next/navigation";
+import { AUDIENCE_HOMES, audienceForPath } from "./audiences";
 
 const AudienceContext = createContext(null);
 
 /**
- * Holds the current audience ("business" | "agency") and keeps it in sync with:
+ * Holds the current audience ("business" | "agency" | "org") and keeps it in sync with:
  *  - the <html data-audience> attribute (drives CSS reskin site-wide, set pre-paint
  *    by the no-flash script in the root layout);
  *  - localStorage (so the choice persists across pages and visits);
- *  - the two canonical home routes (/ = business, /for-agencies = agency).
+ *  - the canonical home routes (see AUDIENCE_HOMES).
  */
 export function AudienceProvider({ children }) {
   const pathname = usePathname();
@@ -31,13 +32,13 @@ export function AudienceProvider({ children }) {
   // On mount, adopt whatever the pre-paint script already resolved.
   useEffect(() => {
     const fromDom = document.documentElement.dataset.audience;
-    setAudienceState(fromDom === "agency" ? "agency" : "business");
+    setAudienceState(fromDom in AUDIENCE_HOMES ? fromDom : "business");
   }, []);
 
-  // The two home URLs are the source of truth for their audience.
+  // Each home URL is the source of truth for its audience.
   useEffect(() => {
-    if (pathname === "/for-agencies") apply("agency");
-    else if (pathname === "/") apply("business");
+    const fromPath = audienceForPath(pathname);
+    if (fromPath) apply(fromPath);
   }, [pathname, apply]);
 
   return (

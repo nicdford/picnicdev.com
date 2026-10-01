@@ -3,7 +3,16 @@
 import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
-const tiers = ["Not sure yet", "Static", "WordPress", "Custom", "Agency partner"];
+const tiers = [
+  "Not sure yet",
+  "Static",
+  "WordPress",
+  "Custom",
+  "Care plan: Essentials",
+  "Care plan: Steady",
+  "Care plan: Part-time dev",
+  "Agency partner",
+];
 
 export default function ContactForm() {
   const params = useSearchParams();

@@ -20,8 +20,6 @@ export default function Footer() {
 
         <div className="fcol">
           <h4>Explore</h4>
-          <Link href="/#pricing">Pricing</Link>
-          <Link href="/about">About</Link>
           <Link href="/contact">Contact</Link>
         </div>
 
@@ -30,6 +28,7 @@ export default function Footer() {
           <Link href="/#static">Static sites</Link>
           <Link href="/#wordpress">WordPress builds</Link>
           <Link href="/#custom">Custom & app dev</Link>
+          <Link href="/for-organizations#plans">Monthly care plans</Link>
           <Link href="/for-agencies">Agency partners</Link>
         </div>
       </div>

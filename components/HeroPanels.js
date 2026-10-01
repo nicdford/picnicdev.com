@@ -1,6 +1,6 @@
 // Hero poster grid: Nic's intro panel + flat-outline picnic-food tiles,
 // drawn in the screenprint world (thick black outlines, flat poster inks).
-// Audience-aware so the same composition serves / and /for-agencies.
+// Audience-aware so the same composition serves every audience home.
 
 import Icon from "./Icon";
 
@@ -86,6 +86,15 @@ const COPY = {
     chips: [
       { icon: "clock", label: "On-time, every time" },
       { icon: "tag", label: "White-label" },
+    ],
+  },
+  org: {
+    role: "Your part-time developer",
+    promise:
+      "“Think of me as the developer down the hall — there when you need a few hours, without the full-time salary.”",
+    chips: [
+      { icon: "clock", label: "Hours when you need them" },
+      { icon: "leaf", label: "Hosting included" },
     ],
   },
 };
