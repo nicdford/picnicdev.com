@@ -3,6 +3,8 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { AudienceProvider } from "@/components/AudienceProvider";
+import { IntakeProvider } from "@/components/intake/IntakeProvider";
+import SiteChrome from "@/components/SiteChrome";
 import { AUDIENCE_HOMES } from "@/components/audiences";
 
 // Runs before paint: resolves the audience from the URL (home routes) or the
@@ -65,9 +67,15 @@ export default function RootLayout({ children }) {
       <body>
         <script dangerouslySetInnerHTML={{ __html: noFlash }} />
         <AudienceProvider>
-          <Nav />
-          <main>{children}</main>
-          <Footer />
+          <IntakeProvider>
+            <SiteChrome>
+              <Nav />
+            </SiteChrome>
+            <main>{children}</main>
+            <SiteChrome>
+              <Footer />
+            </SiteChrome>
+          </IntakeProvider>
         </AudienceProvider>
       </body>
     </html>

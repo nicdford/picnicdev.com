@@ -1,0 +1,47 @@
+name: Deploy holding page to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      # Pages can only serve static files, so publish just the holding page at /.
+      # The rest of the site (API route, inbox, audience pages) needs a server.
+      - name: Keep only the holding page
+        run: find app -mindepth 1 -maxdepth 1 ! -name page.js ! -name layout.js ! -name globals.css ! -name icon.svg ! -name robots.js -exec rm -rf {} +
+      - run: npm run build
+        env:
+          PAGES_EXPORT: "1"
+      - run: echo "picnicdev.com" > out/CNAME
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

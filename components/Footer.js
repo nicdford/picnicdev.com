@@ -1,4 +1,5 @@
 import Link from "next/link";
+import IntakeLink from "./intake/IntakeLink";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -20,7 +21,7 @@ export default function Footer() {
 
         <div className="fcol">
           <h4>Explore</h4>
-          <Link href="/contact">Contact</Link>
+          <IntakeLink>Contact</IntakeLink>
         </div>
 
         <div className="fcol">

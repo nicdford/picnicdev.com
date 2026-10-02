@@ -1,6 +1,6 @@
-// Hero poster grid: Nic's intro panel + flat-outline picnic-food tiles,
-// drawn in the screenprint world (thick black outlines, flat poster inks).
-// Audience-aware so the same composition serves every audience home.
+// Hero poster: Nic plus three flat-outline picnic-food tiles, drawn in the
+// screenprint world (thick black outlines, flat poster inks). Shared by every
+// audience home so the switcher never reshapes the first screen.
 
 import Icon from "./Icon";
 
@@ -69,63 +69,21 @@ function Basket() {
   );
 }
 
-const COPY = {
-  business: {
-    role: "Founder & developer, picnicdev",
-    promise:
-      "“You’ll work with me the whole way — I’m the one who quotes your project, builds it, and answers your email.”",
-    chips: [
-      { icon: "mail", label: "You email me, I reply" },
-      { icon: "hammer", label: "I build it myself" },
-    ],
-  },
-  agency: {
-    role: "Your white-label developer",
-    promise:
-      "“Bring me in like part of your own studio — I hit your deadlines, build to your designs, and stay invisible to your client.”",
-    chips: [
-      { icon: "clock", label: "On-time, every time" },
-      { icon: "tag", label: "White-label" },
-    ],
-  },
-  org: {
-    role: "Your part-time developer",
-    promise:
-      "“Think of me as the developer down the hall — there when you need a few hours, without the full-time salary.”",
-    chips: [
-      { icon: "clock", label: "Hours when you need them" },
-      { icon: "leaf", label: "Hosting included" },
-    ],
-  },
-};
-
-export default function HeroPanels({ variant = "business" }) {
-  const c = COPY[variant] || COPY.business;
+export default function HeroPanels() {
   return (
     <div className="hero-poster">
-      <div className="hp-tile hp-nic">
-        <div className="dev-top">
-          <div className="dev-avatar">
-            <img src="/nic.jpg" alt="Nic Ford" width="800" height="800" />
-          </div>
-          <div>
-            <p className="dev-hi">
-              Hi, I&apos;m Nic <Icon name="wave" />
-            </p>
-            <p className="dev-name">Nic Ford</p>
-            <p className="dev-role">{c.role}</p>
-          </div>
-        </div>
-        <p className="dev-promise">{c.promise}</p>
-        <div className="dev-chips">
-          {c.chips.map((chip) => (
-            <span className="dev-chip" key={chip.label}>
-              <Icon name={chip.icon} /> {chip.label}
-            </span>
-          ))}
-        </div>
+      <div className="hp-tile hp-photo">
+        <img
+          src="/nic.jpg"
+          alt="Nic Ford, founder and developer of picnicdev"
+          width="800"
+          height="800"
+          fetchPriority="high"
+        />
+        <p className="hp-label">
+          Hi, I&apos;m Nic <Icon name="wave" />
+        </p>
       </div>
-
       <div className="hp-tile hp-food hp-blue">
         <Burger />
       </div>

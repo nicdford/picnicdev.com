@@ -2,7 +2,7 @@
 // provider, the switcher, and the pre-paint script in the root layout, so a new
 // audience only has to be added here (plus its page and switcher styling).
 export const AUDIENCE_HOMES = {
-  business: "/",
+  business: "/for-business",
   agency: "/for-agencies",
   org: "/for-organizations",
 };

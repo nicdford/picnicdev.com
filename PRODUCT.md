@@ -70,9 +70,14 @@ and hours on the site are placeholders until set.
 - Free hosting applies specifically to static builds (generous static-host free tiers).
   WordPress and custom apps carry hosting costs that vary by project — future work must not
   imply those are also free.
-- Contact currently flows through a `mailto:` (no backend), consistent with keeping the site
-  itself cheap to run. Real business contact address is **undecided** — the site currently uses
-  a placeholder (`hello@picnicdev.com`); confirm before treating as real.
+- Leads come in through **Anty's ticket stand**: a conversational intake that opens over any
+  audience page from the start/contact links (and inline at `/contact`). Anty is Nic's helper —
+  never Nic, never an AI — and every reply comes from Nic himself. Each finished ticket is stored
+  (libSQL: a local SQLite file in development, Turso or a volume file in production), emailed to
+  Nic through Resend when configured, and listed in a password-protected inbox at `/inbox`; a
+  prefilled `mailto:` is the fallback if delivery fails. Free tiers keep it near-zero cost to run.
+  Real business contact address is **undecided** — the site currently uses a placeholder
+  (`hello@picnicdev.com`); confirm before treating as real.
 - Market/geography (local vs. remote/national) is **undecided** — do not assert a service area.
 
 ## Brand Commitments

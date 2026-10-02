@@ -2,67 +2,41 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
 import AudienceSwitcher from "./AudienceSwitcher";
+import IntakeLink from "./intake/IntakeLink";
 
 export default function Nav() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
-  const links = [
-    { href: "/contact", label: "Contact" },
-  ];
-
-  // Close the mobile menu whenever the route changes.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
 
   return (
-    <header className="nav">
-      <div className="nav-inner">
-        <Link href="/" className="brand" aria-label="picnicdev home">
-          <span className="dot" aria-hidden="true">
-            <BasketMark />
+    <>
+      <header className="nav">
+        <div className="nav-inner">
+          <Link href="/" className="brand" aria-label="picnicdev home">
+            <span className="dot" aria-hidden="true">
+              <BasketMark />
+            </span>
+            <span className="brand-word">
+              picnic<span className="dev">dev</span>
+            </span>
+          </Link>
+
+          <span className="nav-switch-wrap">
+            <AudienceSwitcher />
           </span>
-          <span className="brand-word">
-            picnic<span className="dev">dev</span>
-          </span>
-        </Link>
 
-        <span className="nav-switch-wrap">
-          <AudienceSwitcher />
-        </span>
-
-        <div className="nav-right">
-          <button
-            className={`burger ${open ? "open" : ""}`}
-            aria-label="Toggle menu"
-            aria-expanded={open}
-            onClick={() => setOpen((v) => !v)}
-          >
-            <span />
-            <span />
-            <span />
-          </button>
-
-          <nav className={`nav-links ${open ? "show" : ""}`}>
-            {links.map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className={`link ${pathname === l.href ? "active" : ""}`}
-              >
-                {l.label}
-              </Link>
-            ))}
+          <nav className="nav-links" aria-label="Main">
+            <IntakeLink aria-current={pathname === "/contact" ? "page" : undefined}>
+              Contact
+            </IntakeLink>
           </nav>
         </div>
-      </div>
+      </header>
+      {/* Phones: below the sticky header, so it scrolls away with the page */}
       <div className="nav-switch-bar">
         <AudienceSwitcher compact />
       </div>
-    </header>
+    </>
   );
 }
 
