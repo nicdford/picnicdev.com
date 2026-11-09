@@ -130,7 +130,6 @@ export const carePlans = [
     features: [
       "Everything in Essentials",
       "Content edits & small fixes",
-      "Small updates & ongoing changes",
       "Quarterly site check-up",
     ],
     cta: "Start Steady",
