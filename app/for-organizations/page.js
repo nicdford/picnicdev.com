@@ -92,7 +92,7 @@ export default function ForOrganizations() {
             </h2>
             <p className="lead">
               Your WordPress site still needs someone who knows how it works: to keep it
-              updated, add the event page, fix the broken form. Every plan
+              updated, add an event page, fix the broken form. Every plan
               includes hosting, updates, backups, and monitoring. You pick the
               developer time that fits your year.
             </p>
