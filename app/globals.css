@@ -99,16 +99,6 @@ h3 { font-size: clamp(1.15rem, 1.6vw, 1.3rem); }
 
 /* the italic phrase in a headline; .accent paints it red */
 .serif-italic { font-family: var(--font-display); font-style: italic; font-weight: 800; }
-
-/* H1s use the wordmark's face, Darumadrop One, which has one upright weight:
-   no faux bold or italic, so the accent phrase is only red there */
-h1 {
-  font-family: var(--font-darumadrop), var(--font-display);
-  font-weight: 400;
-  letter-spacing: 0;
-  font-synthesis: none;
-}
-h1 .serif-italic { font-family: inherit; font-style: normal; font-weight: inherit; }
 .accent { color: var(--red); }
 
 p { margin: 0 0 1rem; }
