@@ -138,7 +138,7 @@ export const carePlans = [
   },
   {
     id: "part-time",
-    kicker: "The Regular",
+    kicker: "The Basket",
     name: "Part-time dev",
     price: "$500",
     per: "/mo",
