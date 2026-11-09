@@ -200,6 +200,12 @@ a { color: inherit; text-decoration: none; }
   z-index: 50;
   background: var(--paper);
   border-bottom: var(--rule) solid var(--ink);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* tucked away while scrolling down (Nav.js), never while focus is inside */
+.nav[data-tucked]:not(:focus-within) {
+  transform: translateY(-100%);
+  transition-timing-function: cubic-bezier(0.7, 0, 0.84, 0);
 }
 .nav-inner {
   max-width: var(--maxw);

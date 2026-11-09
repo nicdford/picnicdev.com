@@ -102,6 +102,10 @@ old world. Display max ~6rem; body measure 60–72ch.
   (transform and shadow only, visible from the first frame). No scroll reveals.
   Disabled under `prefers-reduced-motion`. The ticket stand has its own bounded
   motion set (below); nothing outside it may borrow those motions.
+  The header is the one piece of chrome that moves (Nic, 2026-11-09): it slides
+  up out of view while the page scrolls down and back on any scroll up (0.28s,
+  ease-out in, ease-in away; `useTuck` in `Nav.js`), staying put within 80px of
+  the top and while keyboard focus is inside it. Under reduced motion it snaps.
 - **Location, lightly.** Nic is based in Boise, Idaho and works with clients
   anywhere. Say so in small lines (the hero caption, "Made in Boise, Idaho" in the
   footer), never as a service area.
