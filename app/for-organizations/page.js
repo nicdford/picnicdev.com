@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Icon from "@/components/Icon";
 import HeroPanels from "@/components/HeroPanels";
 import TierGrid, { TierRows } from "@/components/TierGrid";
 import { buildTiers, carePlans } from "@/components/offerings";
@@ -83,12 +84,14 @@ export default function ForOrganizations() {
       <section className="section" id="plans">
         <div className="wrap">
           <div className="head">
-            <span className="eyebrow">Monthly care plans</span>
+            <span className="eyebrow">
+              <Icon name="wordpress" /> WordPress care plans
+            </span>
             <h2>
               Hosting, upkeep, <span className="serif-italic">and a developer.</span>
             </h2>
             <p className="lead">
-              Your website still needs someone who knows how it works: to keep it
+              Your WordPress site still needs someone who knows how it works: to keep it
               updated, add the event page, fix the broken form. Every plan
               includes hosting, updates, backups, and monitoring. You pick the
               developer time that fits your year.

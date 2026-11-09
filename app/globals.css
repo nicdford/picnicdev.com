@@ -134,6 +134,7 @@ a { color: inherit; text-decoration: none; }
   padding: 0.32rem 0.8rem;
   margin-bottom: 1rem;
 }
+.eyebrow .icon { font-size: 1.45em; margin-right: 0.4em; }
 
 /* ---- Layout ---- */
 .wrap { width: 100%; max-width: var(--maxw); margin: 0 auto; padding: 0 26px; }
