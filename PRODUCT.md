@@ -57,9 +57,11 @@ design → build → launch → post-launch support. Clients choose from three s
 Agency Partner Program runs in parallel: picnicdev builds from the agency's designs under the
 agency's brand, including overflow/staff-augmentation work.
 
-Monthly care plans (organizations audience) bundle managed hosting, updates, backups, monitoring,
-and a fixed block of developer hours: **Essentials**, **Steady**, and **Part-time dev**. Prices
-and hours on the site are placeholders until set.
+Monthly care plans (organizations audience) bundle managed hosting, updates, backups, and
+monitoring, plus a fixed block of developer hours on the upper two:
+- **Essentials** — $50/mo. Hosting and upkeep only; no developer hours, no content edits.
+- **Steady** — $250/mo. 2 developer hours a month, for small updates and ongoing changes.
+- **Part-time dev** — $500/mo. 5 developer hours a month, for new features and bigger work.
 
 ## Capabilities and Constraints
 
@@ -78,7 +80,8 @@ and hours on the site are placeholders until set.
   prefilled `mailto:` is the fallback if delivery fails. Free tiers keep it near-zero cost to run.
   Real business contact address is **undecided** — the site currently uses a placeholder
   (`hello@picnicdev.com`); confirm before treating as real.
-- Market/geography (local vs. remote/national) is **undecided** — do not assert a service area.
+- Nic is **based in Boise, Idaho** and works with clients anywhere. Say where he is in
+  small honest lines ("Made in Boise, Idaho"); do not claim a local-only service area.
 
 ## Brand Commitments
 

@@ -101,53 +101,52 @@ export const partnerTiers = [
   },
 ];
 
-// Monthly all-inclusive plans for organizations. PLACEHOLDER prices and
-// hours — set real numbers before launch.
+// Monthly plans for organizations. Every plan includes hosting and upkeep;
+// Steady and Part-time dev add a fixed block of developer hours.
 export const carePlans = [
   {
     id: "essentials",
     kicker: "The Thermos",
     name: "Essentials",
-    price: "$249", // PLACEHOLDER
+    price: "$50",
     per: "/mo",
-    desc: "Keeps a finished site warm and safe, with a little developer time for the small stuff that comes up.",
+    desc: "Keeps a finished site warm and safe: hosted, updated, backed up, and watched.",
     features: [
       { icon: "leaf", label: "Managed hosting included" },
       "Software & security updates",
       "Daily backups & uptime monitoring",
-      "2 developer hours a month", // PLACEHOLDER
-      "Content edits & small fixes",
     ],
+    muted: ["Content edits & small fixes"],
     cta: "Start Essentials",
   },
   {
     id: "steady",
     kicker: "The Potluck",
     name: "Steady",
-    price: "$549", // PLACEHOLDER
+    price: "$250",
     per: "/mo",
     badge: "Best for most",
-    desc: "For organizations that keep their site busy with events, campaigns, and new pages throughout the year.",
+    desc: "Two developer hours every month, great for small updates and ongoing changes to your site.",
     features: [
       "Everything in Essentials",
-      "5 developer hours a month", // PLACEHOLDER
-      "New pages, forms & landing pages",
-      "Plugin & integration work",
+      "2 developer hours a month",
+      "Content edits & small fixes",
+      "Small updates & ongoing changes",
       "Quarterly site check-up",
     ],
     cta: "Start Steady",
-    variant: "featured",
+    variant: "banner",
   },
   {
     id: "part-time",
     kicker: "The Regular",
     name: "Part-time dev",
-    price: "$999", // PLACEHOLDER
+    price: "$500",
     per: "/mo",
-    desc: "Real development capacity each month, for ongoing projects that don't justify a full-time hire.",
+    desc: "Five developer hours every month, great for building new features and bigger improvements.",
     features: [
       "Everything in Steady",
-      "10 developer hours a month", // PLACEHOLDER
+      "5 developer hours a month",
       "New features & integrations",
       "Help planning what to build next",
       "Priority replies",

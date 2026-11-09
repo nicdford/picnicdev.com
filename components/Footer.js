@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>© {year} picnicdev. Built with care (and a little butter).</span>
+        <span>© {year} picnicdev. Made in Boise, Idaho, with care (and a little butter).</span>
         <span>
           <a href="mailto:hello@picnicdev.com">hello@picnicdev.com</a>
         </span>

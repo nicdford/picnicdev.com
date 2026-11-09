@@ -79,41 +79,6 @@ export default function ForOrganizations() {
         </div>
       </section>
 
-      {/* ---------------- MEET NIC ---------------- */}
-      <section className="section">
-        <div className="wrap promise">
-          <div>
-            <h2>One developer who knows your site.</h2>
-            <p className="lead">
-              Staff and volunteers change. Your website shouldn&apos;t have to
-              be re-explained every time they do. Here&apos;s what you can count
-              on.
-            </p>
-          </div>
-          <div>
-            <ul className="promise-list">
-              <li>
-                One flat monthly price
-                <span>Hosting, maintenance, and your hours in a single bill.</span>
-              </li>
-              <li>
-                You talk to me directly
-                <span>No ticket queue. The person answering is the one doing the work.</span>
-              </li>
-              <li>
-                Plain-language updates
-                <span>You&apos;ll know what I did and why, without the jargon.</span>
-              </li>
-              <li>
-                You own everything
-                <span>The code, the content, the accounts — all yours.</span>
-              </li>
-            </ul>
-            <p className="promise-sign">— Nic</p>
-          </div>
-        </div>
-      </section>
-
       {/* ---------------- CARE PLANS ---------------- */}
       <section className="section" id="plans">
         <div className="wrap">

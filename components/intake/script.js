@@ -693,7 +693,7 @@ function planFlow(ctx) {
         carePlans
           .map((t) => ({
             id: t.id,
-            label: { essentials: "Keep our site safe & updated", steady: "Regular updates & new pages", "part-time": "Ongoing development" }[t.id] || t.name,
+            label: { essentials: "Just keep our site safe & updated", steady: "Small updates & ongoing changes", "part-time": "New features & bigger projects" }[t.id] || t.name,
             sub: `${t.name} · ${priceLabel(t)}`,
           }))
           .concat({ id: "unsure", label: "Not sure yet", sub: "Nic will suggest one" }),
@@ -777,6 +777,7 @@ function planFlow(ctx) {
       kind: "single",
       say: () => "How much web work comes up in a typical month?",
       options: [
+        { id: "none", label: "None, just keep it running" },
         { id: "little", label: "A little, an hour or two" },
         { id: "some", label: "Some, around five hours" },
         { id: "lots", label: "A lot, ten or more" },
@@ -815,9 +816,9 @@ function planFlow(ctx) {
       say: () => "Do you have a monthly budget in mind?",
       aside: () => "This just helps Nic suggest the right plan. You'll always see a flat monthly price first.",
       options: [
-        { id: "low", label: "Under $250 a month" },
-        { id: "mid", label: "$250 to $500" },
-        { id: "high", label: "$500 to $1,000" },
+        { id: "low", label: "Under $100 a month" },
+        { id: "mid", label: "$100 to $300" },
+        { id: "high", label: "$300 to $600" },
         { id: "more", label: "More than that" },
         { id: "check", label: "We'd need to check" },
       ],

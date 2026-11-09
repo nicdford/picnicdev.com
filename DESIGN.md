@@ -14,8 +14,10 @@ never as timid accents: cobalt blue, tomato red-orange, kelly green, golden yell
 picnic pink. Everything is drawn with a **3px near-black outline** (#161311) and sits
 on a **hard, un-blurred offset shadow** (e.g. `6px 6px 0`). Corners lightly rounded
 (12–16px), never pill-soft. Display type is **Rubik** at heavy weights (700–900),
-tracked tight; body is **Nunito Sans**. Illustrations are flat, bold-outline food
-(sandwich, chips, watermelon, basket, strawberry) rendered in the poster inks.
+tracked tight; body is **Nunito Sans**. Photographs are **printed in poster ink**:
+one ink plus cream (a tritone: ink #161311 → the ink → cream #f7ecd8), like a
+screenprinted travel poster. The one exception is Nic's headshot, which stays in
+full color so the person is the only thing on the poster in his true colors.
 Recognizable with all text removed: black-bordered color panels + hard shadows.
 
 **RESTRAINT.** A real poster has one big image and a lot of paper. The loud
@@ -30,12 +32,16 @@ as too busy: 61 outlines, 41 shadows, 7 stickers and 10 sections on one page.)
 **STORY.** A small-business owner (or agency, or organization) lands in a bright,
 printed world, immediately meets Nic in the hero poster, reads his promise, sees
 honest flat prices on color-block cards, and acts. Each home runs hero → promise →
-pricing → how it works → questions → CTA, and says each thing once.
+pricing → how it works → questions → CTA, and says each thing once (the
+organizations home skips the promise and goes straight from hero to care plans).
 
 **FIRST VIEWPORT.** Left: huge Rubik headline with one red italic phrase, lead,
-chunky primary button + text link. Right: a 2×2 poster grid: Nic's photo tile
-(with a small "Hi, I'm Nic" label) plus burger, watermelon, and basket tiles on
-blue, yellow, and green. Cream ground throughout.
+chunky primary button + text link. Right: two overlapping prints, Nic's own
+photo of the Boise Depot tower printed in cobalt (4:5), and his full-color
+headshot (square, with a small "Hi, I'm Nic" label) laid over its lower right
+corner. Under them, one plain line with a map pin: "Based in Boise, Idaho.
+Working with clients anywhere." Cream ground throughout. (Replaced the 2×2 grid
+of Nic plus burger, watermelon, and basket tiles on 2026-10-07.)
 
 **FORM.** Brief-pinned by the user's reference image (a screenprint picnic-food grid).
 No concept roll — a pinned brief beats the roll.
@@ -52,10 +58,12 @@ Poster inks (used as whole fields): `--blue #2b5fd0`, `--red #e8461e`,
 `--green #1f9b4b`, `--yellow #f4bd1e`, `--pink #f2b3cb`, `--white #fffdf6`.
 Deep variants for text-on-color / hovers: `--blue-deep`, `--red-deep`,
 `--green-deep`. Text on a saturated field is white or near-black chosen for ≥4.5:1;
-never a mid-gray. Strategy = **Full palette, placed**: the full set lives in the
-hero tiles; elsewhere each ink has one job. Red-deep = primary action and the CTA
+never a mid-gray. Strategy = **Full palette, placed**: each ink has one job.
+Blue also prints the hero's Depot photo. Red-deep = primary action and the CTA
 box; yellow = highlight (sticker, step numbers, link underlines, CTA button); pink =
-the featured pricing card; green-deep = checks and tier kickers. Section
+the featured pricing card on the business and agency homes (the organizations
+home marks its featured plan with a yellow "Best for most" band across the card's
+top instead, the card raised by the band's height so prices still align); green-deep = checks and tier kickers. Section
 backgrounds stay cream: no colored bands, no rainbow card rows.
 
 ## Type
@@ -85,10 +93,13 @@ old world. Display max ~6rem; body measure 60–72ch.
   ticket's rubber stamp (below), and that exception belongs to the stamp alone.
   Every other section opens on its heading alone.
 - **Gingham twice.** The CTA box's top edge and the footer seam. Nowhere else.
-- **One moment of motion per page.** The hero tiles lift off the paper on load
+- **One moment of motion per page.** The hero prints lift off the paper on load
   (transform and shadow only, visible from the first frame). No scroll reveals.
   Disabled under `prefers-reduced-motion`. The ticket stand has its own bounded
   motion set (below); nothing outside it may borrow those motions.
+- **Location, lightly.** Nic is based in Boise, Idaho and works with clients
+  anywhere. Say so in small lines (the hero caption, "Made in Boise, Idaho" in the
+  footer), never as a service area.
 - **Icons in-world.** Food/UI icons are flat, bold-outline SVG in the poster inks —
   not emoji, not thin-line icon fonts. Arrows, close, check, chevron, and pencil
   are drawn SVG from the shared icon set, never text glyphs (← → × ✓) standing
@@ -100,7 +111,7 @@ A conversational intake staged as a picnic stand. The same stand opens as a
 native modal dialog over any audience page from every start/contact link, and
 sits inline on `/contact`. It belongs to the poster world; it is not a second
 world. Anty (red ant, ink outlines, yellow pencil) is drawn as inline SVG in the
-hero tiles' outline grammar.
+site's bold-outline grammar.
 
 **Frame.** On desktop, a modal about 1080px wide with a 3px ink outline, 20px
 corners, and the 5px hard shadow, over a dotted cream wash (the paper grain, not

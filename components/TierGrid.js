@@ -16,6 +16,8 @@ function Price({ t }) {
 /**
  * Row of pricing cards. A tier may omit `price` (quoted work), set `per`
  * (e.g. "/mo") after the price, and list `muted` features it doesn't include.
+ * `variant: "featured"` paints the card pink; `variant: "banner"` instead runs
+ * its badge as a yellow band across the top and raises the card above its row.
  * Each card's button opens Anty's ticket stand already set to that tier.
  */
 export default function TierGrid({ tiers }) {
@@ -23,7 +25,12 @@ export default function TierGrid({ tiers }) {
     <div className="tiers">
       {tiers.map((t) => (
         <div className={`tier ${t.variant || ""}`} key={t.id} id={t.id}>
-          {t.badge && <span className="badge">{t.badge}</span>}
+          {t.badge &&
+            (t.variant === "banner" ? (
+              <span className="tier-band">{t.badge}</span>
+            ) : (
+              <span className="badge">{t.badge}</span>
+            ))}
           <span className="kicker">{t.kicker}</span>
           <span className="name">{t.name}</span>
           {t.price && <Price t={t} />}
