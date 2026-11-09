@@ -1,28 +1,23 @@
-import BasketMark from "@/components/BasketMark";
+import Chooser from "@/components/Chooser";
+import Landing from "@/components/Landing";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
-export const metadata = {
-  title: { absolute: "picnicdev — friendly web development" },
-  description: "picnicdev builds fast, affordable websites. Say hi at nic@picnicdev.com.",
-};
+// The GitHub Pages export (PAGES_EXPORT) can only serve this page, so it keeps
+// the holding card. Everywhere else / is the front door to the three homes.
+const HOLDING = !!process.env.PAGES_EXPORT;
 
-const EMAIL = "nic@picnicdev.com";
+export const metadata = HOLDING
+  ? {
+      title: { absolute: "picnicdev — friendly web development" },
+      description: `picnicdev builds fast, affordable websites. Say hi at ${CONTACT_EMAIL}.`,
+    }
+  : {
+      title: { absolute: "picnicdev — one friendly developer, start to finish" },
+      description:
+        "picnicdev is Nic, one experienced developer who builds fast, honestly priced websites for small businesses, care plans for organizations, and white-label builds for agencies.",
+      alternates: { canonical: "/" },
+    };
 
-export default function Landing() {
-  return (
-    <section className="landing">
-      <div className="landing-card">
-        <span className="landing-mark" aria-hidden="true">
-          <BasketMark size={70} />
-        </span>
-        <h1 className="landing-word">
-          picnic<span className="dev">dev</span>
-        </h1>
-        <p className="landing-tag">Friendly web development. New site coming soon.</p>
-        <a className="btn btn-primary landing-email" href={`mailto:${EMAIL}`}>
-          {EMAIL}
-        </a>
-      </div>
-      <div className="landing-seam gingham" aria-hidden="true" />
-    </section>
-  );
+export default function Home() {
+  return HOLDING ? <Landing /> : <Chooser />;
 }

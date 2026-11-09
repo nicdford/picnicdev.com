@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: "When would I need the Custom tier?",
-    a: "When you need real functionality: a web app, user accounts, custom integrations, dashboards, or anything beyond a standard site. These run on fly.io with CI/CD so deploys are safe and repeatable. We scope and quote it together.",
+    a: "When you need real functionality: a web app, user accounts, custom integrations, dashboards, or anything beyond a standard site. Each one gets a private test copy, so every change is checked there before it reaches your live site. We scope and quote it together.",
   },
   {
     q: "Do you work with other agencies?",

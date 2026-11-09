@@ -436,6 +436,81 @@ img.print { height: auto; }
 }
 
 /* ============================================================
+   FRONT DOOR — the chooser at /. The three doors are the page's
+   loud moment (in place of pricing cards); each one presses into
+   its shadow like a button, since each is a link.
+   ============================================================ */
+.doors-h { margin-bottom: clamp(20px, 2.6vw, 32px); }
+.doors {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.6vw, 32px);
+}
+@media (max-width: 860px) { .doors { grid-template-columns: 1fr; max-width: 520px; } }
+.doors > li { display: flex; }
+.door {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: clamp(1.3rem, 2.4vw, 1.8rem);
+  background: var(--card);
+  color: var(--ink);
+  text-decoration: none;
+  border: var(--bd) solid var(--ink);
+  border-radius: var(--radius);
+  box-shadow: var(--sh);
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.door:hover { transform: translate(2px, 2px); box-shadow: var(--sh-sm); }
+.door:active { transform: translate(5px, 5px); box-shadow: 0 0 0 var(--ink); }
+.door:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+/* each audience keeps the switcher's color */
+.door-mark {
+  width: 52px; height: 52px;
+  display: grid; place-items: center;
+  margin-bottom: 0.4rem;
+  border: var(--rule) solid var(--ink);
+  border-radius: 12px;
+  color: #fff;
+  font-size: 1.7rem;
+  background: var(--red-deep);
+}
+.door[data-role="agency"] .door-mark { background: var(--blue-deep); }
+.door[data-role="org"] .door-mark { background: var(--green-deep); }
+.door-name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 1.9vw, 1.55rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.door-line { color: var(--ink-soft); flex: 1; }
+.door-go {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 4px;
+}
+.door:hover .door-go { text-decoration-color: var(--red); }
+.door-go .icon { font-size: 1.15em; }
+.doors-foot { margin-top: clamp(22px, 2.6vw, 32px); }
+@media (prefers-reduced-motion: reduce) {
+  .door:hover, .door:active { transform: none; box-shadow: var(--sh); }
+}
+
+/* ============================================================
    PRICING
    ============================================================ */
 .tiers {
@@ -1363,7 +1438,7 @@ button.tk-row:focus-visible .tk-edit { opacity: 1; }
 .footer .blanket-line { height: 14px; border-bottom: var(--rule) solid var(--ink); }
 .footer-inner { max-width: var(--maxw); margin: 0 auto; padding: 3rem 26px 2rem; display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 2rem; }
 @media (max-width: 720px) { .footer-inner { grid-template-columns: 1fr; gap: 1.6rem; } }
-.footer h4 { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.8rem; }
+.footer h2 { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-bottom: 0.8rem; }
 .footer .fcol a { display: block; padding: 0.28rem 0; color: var(--ink-soft); font-weight: 600; }
 .footer .fcol a:hover { color: var(--red-deep); }
 .footer .about-blurb { color: var(--ink-soft); max-width: 34ch; margin-top: 0.6rem; font-size: 0.96rem; }
@@ -1387,7 +1462,7 @@ button.tk-row:focus-visible .tk-edit { opacity: 1; }
   background: var(--card);
   border: var(--bd) solid var(--ink);
   border-radius: var(--radius-lg);
-  box-shadow: 8px 8px 0 var(--ink);
+  box-shadow: var(--sh);
   padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 3rem);
 }
 .landing-mark {
@@ -1397,8 +1472,7 @@ button.tk-row:focus-visible .tk-edit { opacity: 1; }
   border-radius: 24px;
   background: var(--red);
   border: var(--bd) solid var(--ink);
-  box-shadow: var(--sh);
-  transform: rotate(-4deg);
+  box-shadow: var(--sh-sm);
 }
 .landing-word {
   font-size: clamp(2.8rem, 11vw, 4.5rem);

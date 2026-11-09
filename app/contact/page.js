@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import ContactStand from "@/components/intake/ContactStand";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 export const metadata = {
   title: "Start a project",
@@ -22,8 +23,8 @@ export default function Contact() {
             My helper Anty jots the details onto a ticket for me. I read every one
             myself and reply with a plan and a flat price, usually within a day.
             Rather just email? Reach me at{" "}
-            <a className="text-link" href="mailto:hello@picnicdev.com">
-              hello@picnicdev.com
+            <a className="text-link" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
             </a>
             .
           </p>
@@ -34,8 +35,8 @@ export default function Contact() {
         <noscript>
           <p className="lead">
             Anty&apos;s stand needs JavaScript. Email{" "}
-            <a className="text-link" href="mailto:hello@picnicdev.com">
-              hello@picnicdev.com
+            <a className="text-link" href={`mailto:${CONTACT_EMAIL}`}>
+              {CONTACT_EMAIL}
             </a>{" "}
             and tell me about your project instead.
           </p>

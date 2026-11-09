@@ -8,6 +8,7 @@ import IntakeLink from "./intake/IntakeLink";
 
 export default function Nav() {
   const pathname = usePathname();
+  const isHome = pathname === "/";
 
   return (
     <>
@@ -23,7 +24,7 @@ export default function Nav() {
           </Link>
 
           <span className="nav-switch-wrap">
-            <AudienceSwitcher />
+            {!isHome && <AudienceSwitcher />}
           </span>
 
           <nav className="nav-links" aria-label="Main">
@@ -34,9 +35,11 @@ export default function Nav() {
         </div>
       </header>
       {/* Phones: below the sticky header, so it scrolls away with the page */}
-      <div className="nav-switch-bar">
-        <AudienceSwitcher compact />
-      </div>
+      {!isHome && (
+        <div className="nav-switch-bar">
+          <AudienceSwitcher compact />
+        </div>
+      )}
     </>
   );
 }

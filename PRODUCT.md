@@ -78,8 +78,9 @@ monitoring, plus a fixed block of developer hours on the upper two:
   (libSQL: a local SQLite file in development, Turso or a volume file in production), emailed to
   Nic through Resend when configured, and listed in a password-protected inbox at `/inbox`; a
   prefilled `mailto:` is the fallback if delivery fails. Free tiers keep it near-zero cost to run.
-  Real business contact address is **undecided** — the site currently uses a placeholder
-  (`hello@picnicdev.com`); confirm before treating as real.
+  The public contact address is **`nic@picnicdev.com`**, set once in `lib/contact.js` (every
+  mailto, the intake's fallback, and the default ticket notification read it); confirm it
+  receives mail before launch.
 - Nic is **based in Boise, Idaho** and works with clients anywhere. Say where he is in
   small honest lines ("Made in Boise, Idaho"); do not claim a local-only service area.
 

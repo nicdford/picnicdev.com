@@ -31,7 +31,12 @@ as too busy: 61 outlines, 41 shadows, 7 stickers and 10 sections on one page.)
 
 **STORY.** A small-business owner (or agency, or organization) lands in a bright,
 printed world, immediately meets Nic in the hero poster, reads his promise, sees
-honest flat prices on color-block cards, and acts. Each home runs hero → promise →
+honest flat prices on color-block cards, and acts. The front door at `/` runs hero →
+three doors (Small business, Organization, Agency), the doors standing in for the
+pricing cards as its loud moment, each pressing like a button and marked with its
+audience's switcher color; the header's own switcher steps aside there. (The
+GitHub Pages export still serves the holding card at `/`, since Pages can't run
+the rest of the site; it uses the 5px shadow and an untilted mark.) Each home runs hero → promise →
 pricing → how it works → questions → CTA, and says each thing once (the
 organizations home skips the promise and goes straight from hero to care plans).
 
@@ -172,7 +177,7 @@ sign-up") and that Nic replies personally.
 
 ## Preserved from before (product, not look)
 
-Audience switcher (small business `/`, agency `/for-agencies`, organization
+Audience switcher (small business `/for-business`, agency `/for-agencies`, organization
 `/for-organizations`; no-reload, nav-wide; below the header on phones so the sticky
 bar stays one row), Nic-centered positioning, honest no-proof stance, SEO (per-URL
 titles/H1, sitemap, robots), reduced-motion support, WCAG AA contrast.

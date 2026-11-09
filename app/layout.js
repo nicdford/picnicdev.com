@@ -56,6 +56,9 @@ export const metadata = {
   },
 };
 
+// The Pages export serves only the holding card at /, without nav or footer.
+const HOLDING = !!process.env.PAGES_EXPORT;
+
 export default function RootLayout({ children }) {
   return (
     <html
@@ -68,11 +71,11 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: noFlash }} />
         <AudienceProvider>
           <IntakeProvider>
-            <SiteChrome>
+            <SiteChrome holding={HOLDING}>
               <Nav />
             </SiteChrome>
             <main>{children}</main>
-            <SiteChrome>
+            <SiteChrome holding={HOLDING}>
               <Footer />
             </SiteChrome>
           </IntakeProvider>

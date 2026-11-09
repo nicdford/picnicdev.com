@@ -1,5 +1,6 @@
 import Link from "next/link";
 import IntakeLink from "./intake/IntakeLink";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -14,21 +15,23 @@ export default function Footer() {
             </span>
           </Link>
           <p className="about-blurb">
-            Friendly, no-nonsense web development for small businesses and the
-            agencies that serve them. Good work, fair prices, easy to reach.
+            Friendly, no-nonsense web development for small businesses,
+            organizations, and the agencies that serve them. Good work, fair
+            prices, easy to reach.
           </p>
         </div>
 
         <div className="fcol">
-          <h4>Explore</h4>
+          <h2>Explore</h2>
+          <Link href="/">Home</Link>
           <IntakeLink>Contact</IntakeLink>
         </div>
 
         <div className="fcol">
-          <h4>What we do</h4>
-          <Link href="/#static">Static sites</Link>
-          <Link href="/#wordpress">WordPress builds</Link>
-          <Link href="/#custom">Custom & app dev</Link>
+          <h2>What we do</h2>
+          <Link href="/for-business#static">Static sites</Link>
+          <Link href="/for-business#wordpress">WordPress builds</Link>
+          <Link href="/for-business#custom">Custom & app dev</Link>
           <Link href="/for-organizations#plans">Monthly care plans</Link>
           <Link href="/for-agencies">Agency partners</Link>
         </div>
@@ -36,7 +39,7 @@ export default function Footer() {
       <div className="footer-bottom">
         <span>© {year} picnicdev. Made in Boise, Idaho, with care (and a little butter).</span>
         <span>
-          <a href="mailto:hello@picnicdev.com">hello@picnicdev.com</a>
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </span>
       </div>
     </footer>

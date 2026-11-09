@@ -19,9 +19,10 @@
 // offering, step }.
 
 import { findOffering, priceLabel, carePlans, buildTiers } from "../offerings";
+import { CONTACT_EMAIL } from "@/lib/contact";
 
 export const ANT_NAME = "Anty";
-export const NIC_EMAIL = "hello@picnicdev.com"; // PLACEHOLDER until the real address is set
+export const NIC_EMAIL = CONTACT_EMAIL;
 
 /* ---------------- helpers ---------------- */
 
