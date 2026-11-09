@@ -129,7 +129,6 @@ export const carePlans = [
     desc: "Two developer hours every month, great for small updates and ongoing changes to your site.",
     features: [
       "Everything in Essentials",
-      "2 developer hours a month",
       "Content edits & small fixes",
       "Small updates & ongoing changes",
       "Quarterly site check-up",
