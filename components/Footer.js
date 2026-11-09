@@ -11,7 +11,7 @@ export default function Footer() {
         <div>
           <Link href="/" className="brand" aria-label="picnicdev home">
             <span className="brand-word">
-              picnic<span className="dev">dev</span>
+              Picnic <span className="dev">Dev</span>
             </span>
           </Link>
           <p className="about-blurb">
