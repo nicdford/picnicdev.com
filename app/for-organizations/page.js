@@ -9,24 +9,24 @@ import CtaBand from "@/components/CtaBand";
 export const metadata = {
   title: "Websites & care plans for nonprofits and local organizations",
   description:
-    "A part-time developer for nonprofits and local organizations. Monthly care plans with hosting, maintenance, and a few hours of real development time — no full-time hire needed.",
+    "A part-time developer for nonprofits and local organizations. Monthly care plans with hosting, maintenance, and a developer you can rely on for updates, new pages, and events — no full-time hire needed.",
   alternates: { canonical: "/for-organizations" },
   openGraph: {
     title: "picnicdev — websites & care plans for nonprofits and local organizations",
     description:
-      "Hosting, maintenance, and a few developer hours a month, for one flat monthly price. You work directly with one experienced developer.",
+      "Hosting, maintenance, and a developer for your updates, new pages, and events, for one flat monthly price. You work directly with one experienced developer.",
     url: "https://picnicdev.com/for-organizations",
   },
 };
 
 const faqs = [
   {
-    q: "What counts toward my monthly hours?",
-    a: "Anything that needs a developer: content updates, new pages, forms, small features, fixes, and troubleshooting. Hosting, updates, backups, and monitoring are part of every plan and never come out of your hours.",
+    q: "What can we ask you for?",
+    a: "Anything your site needs: content updates, new pages, event pages, forms, small features, fixes, and troubleshooting. Steady covers the everyday edits; Part-time dev adds new pages and features. Hosting, updates, backups, and monitoring are part of every plan.",
   },
   {
-    q: "What if we need more time one month?",
-    a: "Tell me what's coming up and I'll quote the extra time before I start. You'll never get a bill you didn't agree to first.",
+    q: "What if something bigger comes up?",
+    a: "Each plan covers the kind of work it describes, month to month. For something bigger, like a redesign or a whole new section, tell me what's coming and I'll quote it before I start. You'll never get a bill you didn't agree to first.",
   },
   {
     q: "Can we start with a new site and then move onto a plan?",
@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     q: "Why not just hire someone?",
-    a: "If you have 40 hours of web work every week, you should. Most organizations have a few hours a month, which isn't enough for a hire but is too much to keep asking a volunteer. A care plan fills that gap.",
+    a: "If you have a full-time job's worth of web work, you should. Most organizations have a little every month: not enough for a hire, but too much to keep asking a volunteer. A care plan fills that gap.",
   },
 ];
 
@@ -56,8 +56,9 @@ export default function ForOrganizations() {
             </h1>
             <p className="hero-lead">
               picnicdev is just me — Nic. I build and look after websites for
-              nonprofits and local organizations. Hosting, updates, and a few hours
-              of real developer time each month, for one flat monthly price.
+              nonprofits and local organizations. Hosting, updates, and a developer
+              you can rely on for edits, new pages, and events, for one flat
+              monthly price.
             </p>
             <div className="hero-cta">
               <Link href="#plans" className="btn btn-primary">
@@ -85,8 +86,8 @@ export default function ForOrganizations() {
             <p className="lead">
               Your WordPress site still needs someone who knows how it works: to keep it
               updated, add an event page, fix a broken form. Every plan
-              includes hosting, updates, backups, and monitoring. You pick the
-              developer time that fits your year.
+              includes hosting, updates, backups, and monitoring. You pick how much
+              help you need: none, some, or a lot.
             </p>
           </div>
 

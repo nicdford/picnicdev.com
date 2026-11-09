@@ -694,7 +694,7 @@ function planFlow(ctx) {
         carePlans
           .map((t) => ({
             id: t.id,
-            label: { essentials: "Just keep our site safe & updated", steady: "Small updates & ongoing changes", "part-time": "New features & bigger projects" }[t.id] || t.name,
+            label: { essentials: "Just keep our site safe & updated", steady: "Some edits & updates now and then", "part-time": "Lots of changes, new pages & features" }[t.id] || t.name,
             sub: `${t.name} · ${priceLabel(t)}`,
           }))
           .concat({ id: "unsure", label: "Not sure yet", sub: "Nic will suggest one" }),
@@ -779,9 +779,9 @@ function planFlow(ctx) {
       say: () => "How much web work comes up in a typical month?",
       options: [
         { id: "none", label: "None, just keep it running" },
-        { id: "little", label: "A little, an hour or two" },
-        { id: "some", label: "Some, around five hours" },
-        { id: "lots", label: "A lot, ten or more" },
+        { id: "little", label: "A little, the odd edit or fix" },
+        { id: "some", label: "Some, regular updates and new pages" },
+        { id: "lots", label: "A lot, there's always something" },
         { id: "unsure", label: "Hard to say" },
       ],
       line: said("Monthly work"),

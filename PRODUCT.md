@@ -20,7 +20,7 @@ optimized to convert the primary audience first.
 
 **Also served: nonprofits and local organizations** (chambers of commerce, economic development
 agencies, community groups) with ongoing but part-time web needs. Their job: keep a site hosted,
-maintained, and improving with a few developer hours a month, without hiring a full-time person
+maintained, and improving with a developer they can rely on, without hiring a full-time person
 or leaning on volunteers. Home route: `/for-organizations`, built around monthly care plans.
 
 ## Product Purpose
@@ -58,10 +58,12 @@ Agency Partner Program runs in parallel: picnicdev builds from the agency's desi
 agency's brand, including overflow/staff-augmentation work.
 
 Monthly care plans (organizations audience) bundle managed hosting, updates, backups, and
-monitoring, plus a fixed block of developer hours on the upper two:
-- **Essentials** — $50/mo. Hosting and upkeep only; no developer hours, no content edits.
-- **Steady** — $250/mo. 2 developer hours a month, for small updates and ongoing changes.
-- **Part-time dev** — $500/mo. 5 developer hours a month, for new features and bigger work.
+monitoring. The plans step up by how much help is included, never by counted hours
+(Nic, 2026-11-09): no edits, some edits, lots of changes. Copy never names hours.
+- **Essentials** — $50/mo. Hosting and upkeep only; no content edits.
+- **Steady** — $250/mo. Everyday edits: content changes, small fixes, event pages.
+- **Part-time dev** — $500/mo. Everything in Steady plus new pages, features and bigger
+  changes. Big one-off work (a redesign, a whole new section) is quoted first.
 
 ## Capabilities and Constraints
 

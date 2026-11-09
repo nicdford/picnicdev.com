@@ -19,7 +19,7 @@ const DOORS = [
     id: "org",
     icon: "hand",
     name: "A nonprofit or organization",
-    line: "Monthly care plans from $50: hosting, upkeep, and developer hours.",
+    line: "Monthly care plans from $50: hosting, upkeep, and help with changes.",
     go: "See care plans",
   },
   {

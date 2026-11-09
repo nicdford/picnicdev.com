@@ -102,7 +102,7 @@ export const partnerTiers = [
 ];
 
 // Monthly plans for organizations. Every plan includes hosting and upkeep;
-// Steady and Part-time dev add a fixed block of developer hours.
+// Steady adds everyday edits; Part-time dev adds new pages and features too.
 export const carePlans = [
   {
     id: "essentials",
@@ -126,10 +126,11 @@ export const carePlans = [
     price: "$250",
     per: "/mo",
     badge: "Best for most",
-    desc: "Two developer hours every month, great for small updates and ongoing changes to your site.",
+    desc: "For the everyday changes: a new staff bio, an event page, a fixed form. Send them over and I'll take care of them.",
     features: [
       "Everything in Essentials",
       "Content edits & small fixes",
+      "Event pages & announcements",
       "Quarterly site check-up",
     ],
     cta: "Start Steady",
@@ -141,10 +142,11 @@ export const carePlans = [
     name: "Part-time dev",
     price: "$500",
     per: "/mo",
-    desc: "Five developer hours every month, great for building new features and bigger improvements.",
+    desc: "For a site that keeps growing: new pages, new features, and bigger changes, from a developer who already knows it.",
     features: [
       "Everything in Steady",
       "Website updates and changes",
+      "New pages & sections",
       "New features & integrations",
       "Help planning what to build next",
       "Priority replies",
