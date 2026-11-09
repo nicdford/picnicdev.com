@@ -1,4 +1,4 @@
-import { Rubik, Nunito_Sans } from "next/font/google";
+import { Rubik, Nunito_Sans, Darumadrop_One } from "next/font/google";
 import "./globals.css";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
@@ -16,6 +16,14 @@ const rubik = Rubik({
   weight: ["500", "700", "800", "900"],
   style: ["normal", "italic"],
   variable: "--font-rubik",
+  display: "swap",
+});
+
+// The wordmark only ("Picnic Dev" in the nav and footer).
+const darumadrop = Darumadrop_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-darumadrop",
   display: "swap",
 });
 
@@ -61,7 +69,7 @@ export default function RootLayout({ children }) {
       lang="en"
       data-audience="business"
       suppressHydrationWarning
-      className={`${rubik.variable} ${nunito.variable}`}
+      className={`${rubik.variable} ${nunito.variable} ${darumadrop.variable}`}
     >
       <body>
         <script dangerouslySetInnerHTML={{ __html: noFlash }} />
