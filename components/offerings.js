@@ -121,7 +121,7 @@ export const carePlans = [
   },
   {
     id: "steady",
-    kicker: "Don’t Go It Alone",
+    kicker: "The Blanket",
     name: "Steady",
     price: "$250",
     per: "/mo",
