@@ -146,7 +146,7 @@ export const carePlans = [
     desc: "Five developer hours every month, great for building new features and bigger improvements.",
     features: [
       "Everything in Steady",
-      "5 developer hours a month",
+      "Unlimited website updates and changes",
       "New features & integrations",
       "Help planning what to build next",
       "Priority replies",
