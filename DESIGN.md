@@ -159,10 +159,10 @@ button that reopens its question. A dashed 2px tear-off footer carries the
 ticket the red band stays pinned to the top of the board and a dark "More of
 your ticket" pill sits at the board's foot.
 
-**The stamp.** SENT TO NIC in red-deep at 900, a 3px outline in its own color
+**The stamp.** READY FOR NIC in red-deep at 900, a 3px outline in its own color
 with an inset double rule, on a translucent white ground, tilted -5deg. It is the
-only tilted element in the world. The inbox reuses it in blue-deep, green-deep,
-or ink to show a ticket's status.
+only tilted element in the world. It never says "sent": the visitor sends the
+ticket from their own email app, so the stand can't know that it went.
 
 **Stand motion, bounded.** The stand moves only on these beats:
 - the modal lifts off the paper on open with the hero's ease (on phones the sheet

@@ -110,7 +110,7 @@ const paceStep = (aside) => ({
   aside: () => aside,
   options: [
     { id: "questions", label: "Sure, ask away", sub: "About two minutes, mostly tapping" },
-    { id: "callback", label: "Just have Nic reach out", sub: "Sends your name and contact to Nic now" },
+    { id: "callback", label: "Just have Nic reach out", sub: "Writes Nic a short email with your name and contact" },
   ],
   line: (a) => (idOf(a.pace) === "callback" ? { k: "Asked for", v: "Nic to reach out" } : null),
 });
@@ -904,17 +904,17 @@ const backBy = (a) => ({ email: "emails you", call: "calls you", text: "texts yo
 
 const NEXT = {
   build: (a) => [
-    "Nic reads your ticket himself.",
+    "You send it from your email app, and Nic reads it himself.",
     `He ${backBy(a)} with a plan and a flat price, usually within a day.`,
     "You decide. Nothing is bought until you say yes.",
   ],
   partner: (a) => [
-    "Nic reads your ticket himself.",
+    "You send it from your email app, and Nic reads it himself.",
     `He ${backBy(a)} with how he'd work with you and his rates, usually within a day.`,
     "You decide. Nothing is agreed until you say yes.",
   ],
   plan: (a) => [
-    "Nic reads your ticket himself.",
+    "You send it from your email app, and Nic reads it himself.",
     `He ${backBy(a)} with the plan he'd suggest and its flat monthly price, usually within a day.`,
     "You decide. Nothing starts until you say yes.",
   ],
@@ -964,7 +964,7 @@ export function tierKey(flow) {
   return flow.group === "partner" ? "shape" : flow.group === "plan" ? "plan" : "track";
 }
 
-/** A short headline for the inbox and the email subject. */
+/** A short headline for the email subject. */
 export function ticketSummary(flow, answers) {
   const id = idOf(answers[tierKey(flow)]) || flow.ctx.start;
   if (flow.group === "partner") return SHAPES[id]?.ticket && id !== "unsure" ? SHAPES[id].ticket : "Agency partnership";

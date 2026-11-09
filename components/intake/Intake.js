@@ -22,13 +22,13 @@ import {
 /**
  * Anty's ticket stand: the project intake. Anty asks one thing at a time on
  * the counter side; every answer is written onto the ticket on the blue board,
- * and the finished ticket is sent to Nic. Rendered inside the modal
+ * and the finished ticket goes to Nic as an email the visitor sends. Rendered inside the modal
  * (IntakeProvider) or inline on /contact (`mode="page"`).
  */
 
 const DRAFT_KEY = "pd-ticket-draft";
 const DRAFT_TTL = 30 * 24 * 60 * 60 * 1000;
-// same rule as the API (app/api/intake/route.js), so the server never refuses a ticket the stand accepted
+// a plausible address, so Nic's reply has somewhere to go
 const EMAIL_RE = /^[^\s@?&#/\\"<>,;:()[\]]+@[^\s@?&#/\\"<>,;:()[\]]+\.[^\s@?&#/\\"<>,;:()[\]]{2,}$/;
 const NOT_ASKED = new Set(["passive", "review"]); // steps an edit never needs to revisit
 
@@ -86,7 +86,7 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
   const [ticketOpen, setTicketOpen] = useState(false);
   const [live, setLive] = useState("");
   const [date, setDate] = useState("");
-  const [honeypot, setHoneypot] = useState("");
+  const [copied, setCopied] = useState(false);
   const [engaged, setEngaged] = useState(mode === "dialog");
   const [more, setMore] = useState(false);
   const [overflow, setOverflow] = useState(false);
@@ -304,57 +304,35 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
     setEngaged(true);
   }
 
-  function payload(a) {
-    const asked = askedSteps(flow, a);
-    const kept = Object.fromEntries(Object.entries(a).filter(([k, v]) => v != null && asked.some((s) => s.id === k)));
-    const r = a.reach || {};
-    const via = REACH.find((o) => o.id === r.id);
-    return {
-      v: 1,
-      group: flow.group,
-      audience: flow.ctx.audience,
-      start: flow.ctx.start,
-      summary: ticketSummary(flow, a),
-      name: (a.name || "").trim(),
-      org: (a.org || "").trim(),
-      email: via?.field === "email" ? (r.email || "").trim() : "",
-      phone: via?.field === "phone" ? (r.phone || "").trim() : "",
-      prefers: via ? via.id : "email",
-      callback: idOf(a.pace) === "callback",
-      lines: ticketLines(flow, a).map(({ k, v, price }) => (price ? { k, v, price } : { k, v })),
-      answers: kept,
-      page: typeof window !== "undefined" ? window.location.pathname : "",
-      website: honeypot,
-    };
+  // There's no server: the finished ticket goes to Nic as an email the
+  // visitor sends from their own mail app, already addressed and written up.
+  function ticketText(a = answers) {
+    const who = [a.name, a.org].map((x) => (x || "").trim()).filter(Boolean).join(" · ");
+    return [`For: ${who}`, ...ticketLines(flow, a).map((l) => `${l.k}: ${l.v}${l.price ? ` (${l.price})` : ""}`)].join("\n");
   }
 
-  function mailtoHref() {
-    const who = [answers.name, answers.org].filter(Boolean).join(" · ");
-    const subject = `Project ticket: ${ticketSummary(flow, answers)}${answers.name ? ` from ${answers.name}` : ""}`;
-    const body = [`For: ${who}`, ...lines.map((l) => `${l.k}: ${l.v}${l.price ? ` (${l.price})` : ""}`)].join("\n");
-    return `mailto:${NIC_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  function mailtoHref(a = answers) {
+    const name = (a.name || "").trim();
+    const subject = `Project ticket: ${ticketSummary(flow, a)}${name ? ` from ${name}` : ""}`;
+    return `mailto:${NIC_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(ticketText(a))}`;
   }
 
-  async function send(a = answers) {
-    if (phase === "sending") return;
-    setPhase("sending");
-    setMood("write");
+  function send(a = answers) {
+    window.location.href = mailtoHref(a);
+    dropDraft();
     setFreshKey((k) => k + 1);
+    setPhase("sent");
+    setMood("happy");
+    setLive("Your email app should open with the ticket written up for Nic. Send it from there.");
+  }
+
+  async function copyTicket() {
     try {
-      const res = await fetch("/api/intake", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload(a)),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) throw new Error(data.error || `HTTP ${res.status}`);
-      dropDraft();
-      setPhase("sent");
-      setMood("happy");
-      setLive("Sent. Your ticket is on Nic's board.");
+      await navigator.clipboard.writeText(`To: ${NIC_EMAIL}\n\n${ticketText()}`);
+      setCopied(true);
+      setLive("Ticket copied.");
     } catch {
-      setPhase("failed");
-      setMood("idle");
+      /* no clipboard access; the address and the email link are still there */
     }
   }
 
@@ -366,13 +344,9 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
     say = `Welcome back${first ? `, ${first}` : ""}! Your ticket's right where you left it. Pick up where we left off?`;
   } else if (phase === "sent") {
     say = callback
-      ? `Done! Nic will reach out soon${first ? `, ${first}` : ""}.`
-      : `Done! Your ticket's on Nic's board${first ? `, ${first}` : ""}.`;
-  } else if (phase === "failed") {
-    say = "Hmm, the ticket didn't make it to Nic's board. Your answers are safe.";
-    aside = "Try again, or send the same ticket as an email.";
-  } else if (phase === "sending") {
-    say = "Carrying it over to Nic…";
+      ? `Almost there${first ? `, ${first}` : ""}! Your email app should be open with a note to Nic. Hit *send* and he'll reach out.`
+      : `Almost there${first ? `, ${first}` : ""}! Your email app should be open with the ticket written up. Hit *send* and it's on its way to Nic.`;
+    aside = `No email app opened? Copy the ticket and send it to ${NIC_EMAIL}.`;
   } else if (greeting) {
     say = `${greeting.say} ${step.say(answers, ctx)}`;
     aside = greeting.aside;
@@ -382,12 +356,12 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
   }
 
   const qid = `${titleId}-q`;
-  const talking = phase === "talk" || phase === "sending";
+  const talking = phase === "talk";
   const latest =
     fresh === "for" && who ? { k: "For", v: who } : lines.find((l) => l.id === fresh) || lines[lines.length - 1];
   const showFoot = phase === "talk";
   // review and the hand-off show the ticket in the flow itself (phones)
-  const inlineTicket = step.kind === "review" || phase === "sent" || phase === "failed";
+  const inlineTicket = step.kind === "review" || phase === "sent";
 
   return (
     <div
@@ -438,12 +412,9 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
               answers={answers}
               ctx={ctx}
               qid={qid}
-              sending={phase === "sending"}
               next={flow.next(answers)}
               onCommit={(v) => commit(step.id, v)}
               onSend={() => send()}
-              honeypot={honeypot}
-              setHoneypot={setHoneypot}
             />
           )}
 
@@ -460,14 +431,14 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
             </div>
           )}
 
-          {phase === "failed" && (
+          {phase === "sent" && (
             <div className="st-actions">
-              <button type="button" className="btn btn-primary" data-autofocus onClick={() => send()}>
-                Try again <Icon name="next" />
-              </button>
-              <a className="st-link" href={mailtoHref()}>
-                Email it instead
+              <a className="btn btn-primary" href={mailtoHref()}>
+                Open the email again <Icon name="mail" />
               </a>
+              <button type="button" className="st-link" onClick={copyTicket}>
+                {copied ? "Copied" : "Copy the ticket"}
+              </button>
             </div>
           )}
 
@@ -533,7 +504,7 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
         {inlineTicket ? (
           <p className="tk-peek tk-peek--status">
             <span className="tk-peek-title">
-              {phase === "sent" ? "Sent to Nic" : phase === "failed" ? "Not sent yet" : "Ready to send"}
+              {phase === "sent" ? "Ready for Nic" : "Ready to send"}
             </span>
             <span className="tk-peek-last">
               {lineCount} {lineCount === 1 ? "line" : "lines"} on your ticket
@@ -606,7 +577,7 @@ export default function Intake({ entry, mode = "dialog", titleId = "intake-title
 
 /* ---------------- answers ---------------- */
 
-function StepAnswer({ step, answers, ctx, qid, sending, next, onCommit, onSend, honeypot, setHoneypot }) {
+function StepAnswer({ step, answers, ctx, qid, next, onCommit, onSend }) {
   const value = answers[step.id];
   switch (step.kind) {
     case "single":
@@ -617,13 +588,13 @@ function StepAnswer({ step, answers, ctx, qid, sending, next, onCommit, onSend, 
     case "long":
       return <TextAnswer step={step} value={value} qid={qid} onCommit={onCommit} />;
     case "reach":
-      return <ReachAnswer value={value} qid={qid} onCommit={onCommit} honeypot={honeypot} setHoneypot={setHoneypot} />;
+      return <ReachAnswer value={value} qid={qid} onCommit={onCommit} />;
     case "review":
       return (
         <div className="st-review">
           <div className="st-actions">
-            <button type="button" className="btn btn-primary" data-autofocus onClick={onSend} disabled={sending}>
-              {sending ? "Sending…" : "Send it to Nic"} {!sending && <Icon name="next" />}
+            <button type="button" className="btn btn-primary" data-autofocus onClick={onSend}>
+              Email it to Nic <Icon name="mail" />
             </button>
           </div>
           <ol className="st-next" aria-label="What happens next">
@@ -831,7 +802,7 @@ function TextAnswer({ step, value, qid, onCommit }) {
 }
 
 /** "What's the best way to contact you?": pick a way, then the matching field appears. */
-function ReachAnswer({ value, qid, onCommit, honeypot, setHoneypot }) {
+function ReachAnswer({ value, qid, onCommit }) {
   const [via, setVia] = useState(value?.id || null);
   const [email, setEmail] = useState(value?.email || "");
   const [phone, setPhone] = useState(value?.phone || "");
@@ -893,16 +864,6 @@ function ReachAnswer({ value, qid, onCommit, honeypot, setHoneypot }) {
           )}
         </div>
       )}
-      {/* left empty by people; filled by bots */}
-      <input
-        className="st-hp"
-        name="website"
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        value={honeypot}
-        onChange={(e) => setHoneypot(e.target.value)}
-      />
     </form>
   );
 }
@@ -922,7 +883,7 @@ function NicNote({ first, reach, callback, group, mode, onClose }) {
     <div className="st-nic">
       <img className="st-nic-photo" src="/nic.jpg" alt="Nic Ford" width="800" height="800" />
       <div className="st-nic-note">
-        <p className="st-nic-h">Thanks{first ? `, ${first}` : ""}. I&apos;ve got it from here.</p>
+        <p className="st-nic-h">Thanks{first ? `, ${first}` : ""}. Send that email and I&apos;ve got it from here.</p>
         <p>
           {callback ? "I'll " : "I read every ticket myself, and I'll "}
           {how} <strong>{where}</strong>{" "}

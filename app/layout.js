@@ -4,7 +4,6 @@ import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { AudienceProvider } from "@/components/AudienceProvider";
 import { IntakeProvider } from "@/components/intake/IntakeProvider";
-import SiteChrome from "@/components/SiteChrome";
 import { AUDIENCE_HOMES } from "@/components/audiences";
 
 // Runs before paint: resolves the audience from the URL (home routes) or the
@@ -56,9 +55,6 @@ export const metadata = {
   },
 };
 
-// The Pages export serves only the holding card at /, without nav or footer.
-const HOLDING = !!process.env.PAGES_EXPORT;
-
 export default function RootLayout({ children }) {
   return (
     <html
@@ -71,13 +67,9 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: noFlash }} />
         <AudienceProvider>
           <IntakeProvider>
-            <SiteChrome holding={HOLDING}>
-              <Nav />
-            </SiteChrome>
+            <Nav />
             <main>{children}</main>
-            <SiteChrome holding={HOLDING}>
-              <Footer />
-            </SiteChrome>
+            <Footer />
           </IntakeProvider>
         </AudienceProvider>
       </body>

@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 const BASE = "https://picnicdev.com";
 
 export default function sitemap() {

@@ -1,4 +1,4 @@
-name: Deploy holding page to GitHub Pages
+name: Deploy the site to GitHub Pages
 
 on:
   push:
@@ -24,13 +24,8 @@ jobs:
           node-version: 20
           cache: npm
       - run: npm ci
-      # Pages can only serve static files, so publish just the holding page at /.
-      # The rest of the site (API route, inbox, audience pages) needs a server.
-      - name: Keep only the holding page
-        run: find app -mindepth 1 -maxdepth 1 ! -name page.js ! -name layout.js ! -name globals.css ! -name icon.svg ! -name robots.js -exec rm -rf {} +
+      # next.config.mjs exports the whole site as static files into out/
       - run: npm run build
-        env:
-          PAGES_EXPORT: "1"
       - run: echo "picnicdev.com" > out/CNAME
       - uses: actions/upload-pages-artifact@v3
         with:

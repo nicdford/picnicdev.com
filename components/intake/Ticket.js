@@ -3,11 +3,11 @@ import Icon from "../Icon";
 /**
  * The ticket for Nic: a printed pad sheet with a red band, one ruled line per
  * answer, and the published starting price on the tier line. Anty's stand
- * fills it live; the inbox shows the same sheet back to Nic.
+ * fills it live, and the finished sheet is what the visitor emails to Nic.
  *
  * Pass `onEdit` to make each line a button that reopens its question.
  * `fresh` names the line that was just written, so it plays the write-in.
- * `stamp` ({ text, date, tone }) brings the rubber stamp down on the sheet.
+ * `stamp` ({ text, date }) brings the rubber stamp down on the sheet.
  */
 export default function Ticket({
   date,
@@ -95,8 +95,8 @@ export default function Ticket({
         <footer className={`tk-foot${stamp ? " has-stamp" : ""}`}>
           {footer && <span className="tk-foot-text">{footer}</span>}
           {stamp && (
-            <p className={`tk-stamp${stamp.tone ? ` tk-stamp--${stamp.tone}` : ""}`} role="status">
-              {stamp.text || "Sent to Nic"}
+            <p className="tk-stamp" role="status">
+              {stamp.text || "Ready for Nic"}
               {stamp.date && <small>{stamp.date}</small>}
             </p>
           )}

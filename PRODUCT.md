@@ -74,13 +74,13 @@ monitoring, plus a fixed block of developer hours on the upper two:
   imply those are also free.
 - Leads come in through **Anty's ticket stand**: a conversational intake that opens over any
   audience page from the start/contact links (and inline at `/contact`). Anty is Nic's helper —
-  never Nic, never an AI — and every reply comes from Nic himself. Each finished ticket is stored
-  (libSQL: a local SQLite file in development, Turso or a volume file in production), emailed to
-  Nic through Resend when configured, and listed in a password-protected inbox at `/inbox`; a
-  prefilled `mailto:` is the fallback if delivery fails. Free tiers keep it near-zero cost to run.
+  never Nic, never an AI — and every reply comes from Nic himself. The site is static files on
+  GitHub Pages with no server (2026-11-09): a finished ticket opens in the visitor's own email
+  app, addressed to Nic and written up, and they send it from there (with a copy button for
+  anyone without an email app). Stored tickets, Resend notifications and the `/inbox` live on
+  the `feature/server-intake` branch for later.
   The public contact address is **`nic@picnicdev.com`**, set once in `lib/contact.js` (every
-  mailto, the intake's fallback, and the default ticket notification read it); confirm it
-  receives mail before launch.
+  mailto and the intake read it); confirm it receives mail before launch.
 - Nic is **based in Boise, Idaho** and works with clients anywhere. Say where he is in
   small honest lines ("Made in Boise, Idaho"); do not claim a local-only service area.
 

@@ -1011,7 +1011,6 @@ html.intake-open { overflow: hidden; scrollbar-gutter: stable; }
 
 .st-field { display: grid; gap: 6px; }
 .st-field > span { font-family: var(--font-display); font-weight: 700; font-size: 0.92rem; }
-.st-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
 
 /* ---- back · progress · skip ---- */
 .st-foot {
@@ -1269,8 +1268,9 @@ button.tk-row:focus-visible .tk-edit { opacity: 1; }
 @keyframes tk-mark { from { background-color: rgba(244, 189, 30, 0.55); } to { background-color: transparent; } }
 
 /* sent: the rubber stamp comes down */
-.tk-foot.has-stamp { display: flex; align-items: center; justify-content: space-between; gap: 0.9rem; padding-block: 0.7rem 0.85rem; }
-.tk-foot-text { flex: 1 1 auto; min-width: 0; }
+/* on a narrow ticket the stamp drops under the note instead of squeezing it */
+.tk-foot.has-stamp { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 0.9rem; padding-block: 0.7rem 0.85rem; }
+.tk-foot-text { flex: 1 1 14rem; min-width: 0; }
 .tk-stamp {
   flex: none;
   margin-left: auto;
@@ -1294,10 +1294,6 @@ button.tk-row:focus-visible .tk-edit { opacity: 1; }
   animation: tk-stamp 0.24s cubic-bezier(0.55, 0, 1, 0.45) both; /* accelerates into the paper and stops dead */
 }
 .tk-stamp small { font-size: 0.66rem; font-weight: 800; letter-spacing: 0.12em; }
-/* the inbox stamps each ticket with its status */
-.tk-stamp--blue { color: var(--blue-deep); }
-.tk-stamp--green { color: var(--green-deep); }
-.tk-stamp--ink { color: var(--ink); }
 @keyframes tk-stamp { from { transform: rotate(-5deg) scale(1.8); opacity: 0; } }
 
 /* phones get the ticket inline once it's the whole point (review, sent) */
@@ -1422,11 +1418,9 @@ button.tk-row:focus-visible .tk-edit { opacity: 1; }
   .st-board-foot { display: none; }
 
   .stand[data-kind="review"] .ticket--inline,
-  .stand[data-phase="sent"] .ticket--inline,
-  .stand[data-phase="failed"] .ticket--inline { display: block; }
+  .stand[data-phase="sent"] .ticket--inline { display: block; }
   /* read the ticket first, then the send button sits right under it */
-  .stand[data-kind="review"][data-phase="talk"] .ticket--inline,
-  .stand[data-kind="review"][data-phase="sending"] .ticket--inline { order: -1; margin-top: 14px; }
+  .stand[data-kind="review"][data-phase="talk"] .ticket--inline { order: -1; margin-top: 14px; }
   /* the strip stays as the sheet's header; in review and after sending it's a plain label */
   .tk-peek--status { grid-template-columns: auto minmax(0, 1fr); margin: 0; cursor: default; }
 
@@ -1450,52 +1444,3 @@ button.tk-row:focus-visible .tk-edit { opacity: 1; }
 .footer .fcol a:hover { color: var(--red-deep); }
 .footer .about-blurb { color: var(--ink-soft); max-width: 34ch; margin-top: 0.6rem; font-size: 0.96rem; }
 .footer-bottom { border-top: var(--rule) solid var(--ink); padding: 1.1rem 26px; max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.6rem; color: var(--ink-soft); font-weight: 600; font-size: 0.88rem; }
-
-/* ============================================================
-   LANDING — the standalone holding page at /. One loud
-   moment: the poster card. No nav or footer (see SiteChrome).
-   ============================================================ */
-.landing {
-  min-height: 100svh;
-  display: grid;
-  place-items: center;
-  padding: 48px 16px 64px;
-  position: relative;
-}
-.landing-card {
-  width: 100%;
-  max-width: 560px;
-  text-align: center;
-  background: var(--card);
-  border: var(--bd) solid var(--ink);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--sh);
-  padding: clamp(2rem, 6vw, 3.5rem) clamp(1.25rem, 5vw, 3rem);
-}
-.landing-mark {
-  width: 104px; height: 104px;
-  margin: 0 auto 1.4rem;
-  display: grid; place-items: center;
-  border-radius: 24px;
-  background: var(--red);
-  border: var(--bd) solid var(--ink);
-  box-shadow: var(--sh-sm);
-}
-.landing-word {
-  font-size: clamp(2.8rem, 11vw, 4.5rem);
-  letter-spacing: -0.04em;
-  margin-bottom: 0.25em;
-}
-.landing-word .dev { color: var(--red-deep); }
-.landing-tag {
-  color: var(--ink-soft);
-  font-size: 1.1rem;
-  margin: 0 0 1.8rem;
-}
-.landing-email { font-size: 1.1rem; max-width: 100%; overflow-wrap: anywhere; }
-.landing-seam {
-  position: absolute;
-  left: 0; right: 0; bottom: 0;
-  height: 16px;
-  border-top: var(--rule) solid var(--ink);
-}
