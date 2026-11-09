@@ -126,7 +126,7 @@ export const carePlans = [
     price: "$250",
     per: "/mo",
     badge: "Best for most",
-    desc: "For the everyday changes: a new staff bio, an event page, a fixed form. Send them over and I'll take care of them.",
+    desc: "For the everyday changes: a new staff bio, an event page, a broken form needing fixed. Send them over and I'll take care of them.",
     features: [
       "Everything in Essentials",
       "Content edits & small fixes",
