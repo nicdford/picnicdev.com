@@ -106,7 +106,7 @@ export const partnerTiers = [
 export const carePlans = [
   {
     id: "essentials",
-    kicker: "The Thermos",
+    kicker: "The Basics",
     name: "Essentials",
     price: "$50",
     per: "/mo",
