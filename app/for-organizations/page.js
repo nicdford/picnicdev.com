@@ -3,7 +3,6 @@ import Icon from "@/components/Icon";
 import HeroPanels from "@/components/HeroPanels";
 import TierGrid, { TierRows } from "@/components/TierGrid";
 import { buildTiers, carePlans } from "@/components/offerings";
-import Steps from "@/components/Steps";
 import Faq from "@/components/Faq";
 import CtaBand from "@/components/CtaBand";
 
@@ -19,13 +18,6 @@ export const metadata = {
     url: "https://picnicdev.com/for-organizations",
   },
 };
-
-const steps = [
-  { h: "Say hi", p: "Tell me about your organization and your site. I'll recommend a plan that fits." },
-  { h: "Settle in", p: "I move your site onto managed hosting and give it a full once-over." },
-  { h: "Ask away", p: "Email me what you need. I handle it from your monthly hours." },
-  { h: "Stay in the loop", p: "Each month you see where your hours went and what's coming next." },
-];
 
 const faqs = [
   {
@@ -122,16 +114,6 @@ export default function ForOrganizations() {
               ever.
             </p>
           </div>
-        </div>
-      </section>
-
-      {/* ---------------- PROCESS ---------------- */}
-      <section className="section">
-        <div className="wrap">
-          <div className="head">
-            <h2>Easy from hello to every month after</h2>
-          </div>
-          <Steps steps={steps} />
         </div>
       </section>
 

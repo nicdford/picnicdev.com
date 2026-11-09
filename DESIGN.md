@@ -38,7 +38,8 @@ audience's switcher color; the header's own switcher steps aside there. (The
 GitHub Pages export still serves the holding card at `/`, since Pages can't run
 the rest of the site; it uses the 5px shadow and an untilted mark.) Each home runs hero → promise →
 pricing → how it works → questions → CTA, and says each thing once (the
-organizations home skips the promise and goes straight from hero to care plans).
+organizations home skips the promise and goes straight from hero to care plans, and
+skips how it works, going from its build prices straight to questions).
 
 **FIRST VIEWPORT.** Left: huge Rubik headline with one red italic phrase, lead,
 chunky primary button + text link. Right: two overlapping prints, Nic's own
