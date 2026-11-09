@@ -244,6 +244,9 @@ a { color: inherit; text-decoration: none; }
   font-weight: 400;
   font-size: 2rem;
   letter-spacing: 0;
+  /* Darumadrop One's ascent is far taller than its descent, so its letters
+     sit 0.14em low in the line box; lift them level with the tile */
+  transform: translateY(-0.14em);
 }
 
 .nav-links { display: flex; align-items: center; gap: 1.2rem; justify-self: end; }
